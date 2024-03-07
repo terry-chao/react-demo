@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react"
+const count = 100
+function getName() {
+  return 'jack'
+}
+
+const list = [
+  {id: 1001, name: "Vue"},
+  {id: 1002, name: "React"},
+  {id: 1003, name: "Angular"},
+]
+
+const login = false
 
 function App() {
+  const [count, setCount] = useState(0)
+  const clickHandler = (e) => {
+    setCount(count+1)
+    console.log("button 被按下", e);
+  }
+
+  const [form, setFrom] = useState({name: 'jack'})
+  const clickHandler2 = () => {
+    setFrom({
+      ...form, 
+      name: 'aaa'
+    })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={clickHandler}>{count}</button>
+      <button onClick={clickHandler2}>{form.name}</button>
     </div>
   );
 }
